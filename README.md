@@ -174,6 +174,26 @@ The notebook also generates:
 These metrics help analyze how effectively the model distinguishes between **scream and non-scream audio signals**.
 
 ---
+## Project Structure
+
+```
+scream-detection-crime-control/
+│
+├── README.md
+├── requirements.txt
+├── Scream_detectionMobileNetV2+BiLSTM.ipynb
+│
+└── dataset/
+    ├── train/
+    │   ├── child/
+    │   ├── women/
+    │   └── normal/
+    │
+    └── test/
+        ├── child/
+        ├── women/
+        └── normal/
+```
 
 ## Applications
 
