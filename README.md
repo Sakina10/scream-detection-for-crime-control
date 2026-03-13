@@ -1,122 +1,213 @@
 # Human Scream Detection for Crime Control
-### AI-powered Acoustic Analysis for Emergency Detection
 
-An intelligent **audio classification system** designed to detect human screams using machine learning and deep learning techniques.  
-This project explores how **AI-driven acoustic monitoring systems** can support **crime prevention, emergency detection, and smart city safety infrastructure**.
+AI-powered audio classification system designed to detect **human scream sounds** from audio recordings using deep learning.
 
-
-## Project Overview
-
-Public safety systems often rely on manual monitoring or delayed reporting during emergencies.  
-This project investigates how **machine learning models can automatically detect distress signals such as human screams** from audio recordings.
-
-By analyzing acoustic patterns using **MFCC and Mel Spectrogram features**, the system learns to classify audio signals into **scream vs non-scream categories**, enabling the possibility of **automated alert systems in high-risk environments**.
-
-Potential applications include:
-
-- Smart city surveillance systems
-- Emergency detection in public spaces
-- Security monitoring in transportation hubs
-- Automated crime prevention systems
-
-## Key Features
-
--  Processing of **6000+ real-world audio samples**
--  Audio preprocessing and noise reduction
--  Feature extraction using **MFCC (Mel Frequency Cepstral Coefficients)**
--  Spectral analysis through **Mel Spectrograms**
--  Deep learning classification using **Convolutional Neural Networks (CNN)**
--  Model evaluation using **Accuracy, Precision, Recall, F1-score, and Confusion Matrix**
--  End-to-end **machine learning pipeline**
-
-## System Pipeline
-
-Raw Audio Data
-      ↓
-Audio Preprocessing & Noise Reduction
-      ↓
-Feature Extraction (MFCC + Mel Spectrogram)
-      ↓
-Dataset Preparation
-      ↓
-CNN Model Training
-      ↓
-Model Evaluation
-      ↓
-Scream vs Non-Scream Prediction
-
-## Technologies Used
-
-**Programming**
-- Python
-
-**Libraries & Frameworks**
-- NumPy
-- Pandas
-- Librosa
-- Scikit-learn
-- TensorFlow / Keras
-- Matplotlib
-
-**Development Environment**
-- Jupyter Notebook
-- Google Colab
-
-## Dataset
-
-The project uses an audio dataset containing **6000+ labeled sound samples**, categorized into:
-
-- Child scream
-- Women scream
-- Normal background audio
-
-Each audio file undergoes preprocessing and feature extraction before being used for model training.
-
-## Model Evaluation Metrics
-
-The model performance was evaluated using:
-
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-- Confusion Matrix
-
-These metrics help determine the effectiveness of the model in detecting distress signals while minimizing false alarms.
-
-## Future Improvements
-
-This project can be expanded into a real-world AI safety system through:
-
-- Real-time audio stream processing
-- Edge AI deployment for smart surveillance devices
-- Integration with IoT security systems
-- Multi-class emotion or distress detection
-- Mobile or web-based emergency alert system
-
-## Real-World Impact
-
-AI-based acoustic monitoring can significantly enhance **public safety infrastructure** by enabling faster response to distress situations.
-
-Potential impact areas include:
-
-- Smart cities
-- Public transportation hubs
-- Campus safety systems
-- Emergency response automation
-
-## Author
-
-Sakina Bohra
-
-Final Year Computer Science Student  
-Specializing in Artificial Intelligence & Machine Learning
-
-📧 sakina.bohra2004@gmail.com  
-🔗 LinkedIn: https://linkedin.com/in/sakina-bohra1007  
+This project explores how **audio signal processing and neural networks** can support **automated emergency detection and smart city safety systems**.
 
 ---
 
-## Acknowledgment
+# Project Overview
 
-This project was developed as part of academic research exploring how **AI-driven audio analysis can support crime detection and emergency response systems**.
+Human screams often indicate **distress, danger, or emergency situations**. Detecting these sounds automatically can enable faster responses in environments such as:
+
+- Public surveillance systems  
+- Smart city monitoring  
+- Emergency detection platforms  
+
+This project builds an **AI-based audio classification system** capable of distinguishing between different types of audio signals related to human screams.
+
+The system converts audio signals into **Mel Spectrogram representations**, extracts spatial features using **MobileNetV2**, and learns temporal patterns using a **Bidirectional LSTM network** to perform classification.
+
+---
+
+# Key Features
+
+- Audio preprocessing and noise reduction  
+- Mel Spectrogram feature extraction from audio signals  
+- Deep learning classification using **MobileNetV2 + Bidirectional LSTM**  
+- Multi-class audio classification  
+- Model performance evaluation using standard metrics  
+
+---
+
+# System Pipeline
+## System Pipeline
+
+```
+Audio Input (.wav)
+      │
+      ▼
+Audio Preprocessing
+(Noise Reduction)
+      │
+      ▼
+Mel Spectrogram Generation
+      │
+      ▼
+Spectrogram → Image Representation
+      │
+      ▼
+MobileNetV2 (CNN Feature Extraction)
+      │
+      ▼
+Bidirectional LSTM
+      │
+      ▼
+Dense Softmax Layer
+      │
+      ▼
+Audio Classification
+```
+---
+
+# Classes Predicted
+
+The model classifies audio signals into the following categories:
+
+- Child Scream  
+- Women Scream  
+- Normal Audio  
+
+---
+
+# Technologies Used
+
+## Programming
+
+- Python  
+- NumPy  
+- Librosa  
+- OpenCV  
+
+## Machine Learning & Deep Learning
+
+- TensorFlow  
+- Keras  
+- MobileNetV2  
+- Bidirectional LSTM  
+
+## Data Analysis & Visualization
+
+- Scikit-learn  
+- Matplotlib  
+- Seaborn  
+
+---
+
+# Dataset
+
+The dataset contains labeled audio samples organized into three categories.
+## Dataset Structure
+
+```
+dataset/
+├── train/
+│   ├── child/
+│   ├── women/
+│   └── normal/
+└── test/
+    ├── child/
+    ├── women/
+    └── normal/
+```
+
+Each audio file is converted into **Mel Spectrogram images**, which are used as input to the deep learning model.
+
+---
+
+# Audio Preprocessing
+
+The audio processing pipeline includes:
+
+- Loading audio signals using **Librosa**  
+- Standardizing the sample rate  
+- Applying **noise gating** to reduce background noise  
+- Generating **Mel Spectrogram features**  
+- Converting spectrograms into image format suitable for CNN input  
+
+## Model Architecture
+
+The deep learning architecture combines **convolutional neural networks (CNNs)** with **recurrent neural networks (RNNs)** to capture both spatial and temporal audio patterns.
+
+### Architecture Overview
+
+- **Input:** Mel Spectrogram Image (224 × 224)  
+- **MobileNetV2:** Pretrained CNN for feature extraction  
+- **Bidirectional LSTM:** Temporal pattern learning  
+- **Dense Layer**  
+- **Softmax Output Layer**
+
+This hybrid architecture improves the model’s ability to detect **complex scream patterns in audio signals**.
+
+---
+
+## Model Training
+
+Training configuration used in this project:
+
+- **Optimizer:** Adam  
+- **Loss Function:** Categorical Crossentropy  
+- **Batch Size:** 32  
+- **Epochs:** 30  
+
+The dataset is divided into **training and testing sets** to evaluate model performance.
+
+---
+
+## Model Evaluation
+
+Model performance is evaluated using several metrics:
+
+- Accuracy  
+- Precision  
+- Recall  
+- F1-Score  
+- Confusion Matrix  
+
+The notebook also generates:
+
+- Training vs Validation Accuracy plots  
+- Loss curves  
+- Classification reports  
+- Confusion matrix visualizations  
+
+These metrics help analyze how effectively the model distinguishes between **scream and non-scream audio signals**.
+
+---
+
+## Applications
+
+Potential real-world applications of this system include:
+
+- Smart city surveillance systems  
+- Automated emergency detection platforms  
+- Public safety monitoring systems  
+- Crime prevention infrastructure  
+- Intelligent urban monitoring systems  
+
+Such systems can help **detect distress signals automatically and trigger faster emergency responses**.
+
+---
+
+## Future Improvements
+
+Possible extensions of this project include:
+
+- Real-time scream detection using microphone input  
+- Integration with **IoT-based smart city monitoring systems**  
+- Deployment using **Flask or FastAPI APIs**  
+- Training on larger and more diverse audio datasets  
+- Exploring **transformer-based audio models**
+
+---
+
+## Author
+
+**Sakina Bohra**
+
+Aspiring **Generative AI and Machine Learning Engineer** interested in building intelligent systems using:
+
+- Artificial Intelligence  
+- Deep Learning  
+- Large Language Models  
+- Smart City AI Systems
